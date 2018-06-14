@@ -6,7 +6,7 @@ To measure nifH abundances we used merged (but unassembled reads from JGI/IMG) a
  
 
 ## Requirements:
-Perl libraries and R
+Perl and R and very basic knowledge of shell scripting.
 
 ## 1) Enumeration of nifH genes using genomes in IMG:
 
@@ -16,11 +16,9 @@ Perl libraries and R
 
 **Step 3**: Blast again "no hit" annotated nitrogenase (after step 2) against the entire JGI/IMG collection of SAGs and MAGs 
 
-Download the file with blast information....
+Download the files with blast information from JGI/IMG. You can find all the files downloaded from JGI in the folder IMG_analysis included in this repository (the files are named missingGenes* and are organized into folders (per sample) and the folder name represent the sample code., e.g, IHUZ, IHXY .....).
 
-Example: you can an example of the file in the folder lklllll
-
-**Step 4**: Filter out: chlorophyllide reductase gene and select only nitrogenase gene taxonomic annotation following this criteria:  
+**Step 4**: Filter out: chlorophyllide reductase gene and select only nitrogenase gene taxonomic annotation following this criteria: e-value < 10-20 and a percentage of identity > 95%
 
 Type in the command line:
 
@@ -28,15 +26,13 @@ Type in the command line:
 for i in */missingGenes*; do sed -n 2p $i | grep -v chlorophyll | awk  -F "\t" '$11 < 1e-20  {print $0}' |  awk  -F "\t" '$8 > 95  {print $0}' ; done >> $i.potential_NIFH.output
 ```
 
-for i in */missingGenes*; do sed -n 2p $i | grep -v chlorophyll | awk  -F "\t" '$11 < 1e-20  {print $0}' |  awk  -F "\t" '$8 > 95  {print $0}' ; done >> $i.potential_NIFH.output
+missingGenes* is the downloaded blast output files from IMG with information about Pfam, KO, COG and taxonomical annotation.
 
+**Step 5**: 
 
-missingGenes* is the downloaded blast output files from IMG with information about Pfam, KO and COG annotation systems
-
-Step 5: 
-
-
-
+```shell
+for i in IMG_analysis/*/*potential_NIFH; do perl perl_script_to_get_taxonomy_abundances.pl info_and_taxo.csv $i $i.output; done 
+```
 
 
 
