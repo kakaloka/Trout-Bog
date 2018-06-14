@@ -1,11 +1,11 @@
 # Trout-Bog
-##NifH gene screening.
+## NifH gene screening.
 
-##About:
+## About:
 To measure nifH abundances we used merged (but unassembled reads from JGI/IMG) and two different approaches:  the first was aimed to compare all reads to genomes in IMG, including the MAGs from Trout Bog. The second  was based on comparing all reads to a database of nifH from many organisms (from Buckley lab). In both approaches we mapped (blasted) the reads to enumerate how many reads matched an annotated nitrogenase sequence. 
  
 
-##Requirements:
+## Requirements:
 Perl libraries and R
 
 ##1)Enumeration of nifH genes using genomes in IMG:
