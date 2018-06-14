@@ -16,9 +16,9 @@ Step 2: Blast the annotated nifH genes against MAGs and SAGs from Trout Bog to r
 
 Step 3: Blast again "no hit" annotated nitrogenase (after step 2) against the entire JGI/IMG collection of SAGs and MAGs 
 
-Dowload the file withe blast information....
+Dowload the file with blast information....
 
-Example: you can file an example of the file in the folder lklllll
+Example: you can an example of the file in the folder lklllll
 
 Step 4: Filter out: chlorophyllide reductase gene and select only nitrogenase gene taxonomic annotation following this criteria:  
 
