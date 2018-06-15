@@ -51,7 +51,7 @@ for i in *.count ; do echo $i; perl create_OTU_file_per_sample.pl list_all_phyla
 ```
 oprtional sort sample per sample date:
 ```shell
-perl ./sort_samples_per_date.pl <file_with_the_sorted_list> <phyla_count>
+perl sort_samples_per_date.pl <file_with_the_sorted_list> <phyla_count>
 
 ```
 
@@ -71,4 +71,5 @@ perl prinseq-lite-0.20.4/prinseq-lite.pl -fastq <input_file> -out_format 1 -out_
 
 ```
 
-**Step 2**: 
+**Step 2**:  BLASTNn (e-value <= 10-20) and performed searches using a nifH sequence database available at the [Buckley Lab website](https://blogs.cornell.edu/buckley/nifh-sequence-database/)
+
