@@ -7,8 +7,8 @@ To measure nifH abundances we used merged (but unassembled reads from JGI/IMG) a
 
 ## Requirements:
 -Perl, R and very basic knowledge of shell scripting.
--Blast
--prinseq
+-[Blast](https://blast.ncbi.nlm.nih.gov/Blast.cgi)
+-Prinseq
 
 ## 1) Enumeration of nifH genes using genomes in IMG:
 
