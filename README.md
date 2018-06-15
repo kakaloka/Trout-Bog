@@ -6,7 +6,9 @@ To measure nifH abundances we used merged (but unassembled reads from JGI/IMG) a
  
 
 ## Requirements:
-Perl, R and very basic knowledge of shell scripting.
+-Perl, R and very basic knowledge of shell scripting.
+-Blast
+-prinseq
 
 ## 1) Enumeration of nifH genes using genomes in IMG:
 
@@ -16,7 +18,7 @@ Perl, R and very basic knowledge of shell scripting.
 
 **Step 3**: Blast again "no hit" annotated nitrogenase (after step 2) against the entire JGI/IMG collection of SAGs and MAGs 
 
-Download the files with blast information from JGI/IMG. You can find all the files downloaded from JGI in the folder IMG_analysis included in this repository (the files are named missingGenes* and are organized into folders (per sample) and the folder name represent the sample code., e.g, IHUZ, IHXY .....).
+Download the files with blast information from JGI/IMG. You can find all the files downloaded from JGI in the folder ./IMG_analysis included in this repository (the files are named missingGenes* and are organized into folders (per sample) and the folder name represent the sample code., e.g, IHUZ, IHXY .....).
 
 **Step 4**: Filter out: chlorophyllide reductase gene contamination and select only nitrogenase gene taxonomic annotation following this criteria: e-value < 10-20 and a percentage of identity > 95%
 
@@ -33,7 +35,7 @@ missingGenes* are the downloaded blast output files from IMG with information ab
 ```shell
 for i in IMG_analysis/*/*potential_NIFH; do perl perl_script_to_get_taxonomy_abundances.pl info_and_taxo.csv $i $i.output; done 
 ```
-Where (*)potential_NIFH are the output of the step 4, info_and_taxo.csv is the taxonomical mapping file and i.output are the output of the script perl_script_to_get_taxonomy_abundances.pl
+Where (*)potential_NIFH are the output of the step 4, info_and_taxo.csv is the taxonomical mapping file and i.output are the output of the script ./perl_script_to_get_taxonomy_abundances.pl
 
 ```shell
 for i in IMG_analysis/*/*potential_NIFH.output ; do awk -F ";" '{print $2}' $i | sort | uniq -c > $i.count; done 
@@ -59,3 +61,6 @@ perl sort_samples_per_date.pl <file_with_the_sorted_list> <phyla_count>
 Some example of R code can be found in the file Chapter4.Rhistory (example: barplot, NMDS plot)
 
 
+## 2) Enumeration of nifH using a nitrogenase gene database ("in house pipeline")
+
+**Step 1**: Convert the sequences downloaded from JGI site from fastq to fasta (corresponding to the metagenomic samples from hypolimnion and epilimnion in troutbog)
