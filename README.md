@@ -78,6 +78,10 @@ perl prinseq-lite-0.20.4/prinseq-lite.pl -fastq <input_file> -out_format 1 -out_
 blastn -query <.fasta_file> -db nifH_database_2012.fasta -outfmt 6 -evalue <1x10-20> -out <blast.output_file> 
 
 ```
-**Step 3**:  Obtain the fasta file only with nifH gene sequences 
+**Step 3** 
+
+**Step 4**:  Obtain the fasta file only with nifH gene sequences using the script get_NifH_fasta.pl
+
+
 
 
