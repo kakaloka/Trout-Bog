@@ -23,12 +23,12 @@ Download the files with blast information from JGI/IMG. You can find all the fil
 Type in the command line:
 
 ```shell
-for i in */missingGenes*; do sed -n 2p $i | grep -v chlorophyll | awk  -F "\t" '$11 < 1e-20  {print $0}' |  awk  -F "\t" '$8 > 95  {print $0}' ; done >> $i.potential_NIFH.output
+for i in */missingGenes*; do sed -n 2p $i | grep -v chlorophyll | awk  -F "\t" '$11 < 1e-20  {print $0}' |  awk  -F "\t" '$8 > 95  {print $0}' > $i.potential_NIFH; done
 ```
 
 missingGenes* are the downloaded blast output files from IMG with information about Pfam, KO, COG and taxonomical annotation.
 
-**Step 5**: nifH gene phylotypes enrichment calculation
+**Step 5**: nifH gene phylotypes enrichment calculation. Before this step is important to make a file with potential nifH per sample. (concatanate all files with the extension .potential_nifH, see examples in the samples folders IMG_analysis) 
 
 ```shell
 for i in IMG_analysis/*/*potential_NIFH; do perl perl_script_to_get_taxonomy_abundances.pl info_and_taxo.csv $i $i.output; done 
@@ -39,6 +39,20 @@ Where (*)potential_NIFH are the output of the step 4, info_and_taxo.csv is the t
 for i in IMG_analysis/*/*potential_NIFH.output ; do awk -F ";" '{print $2}' $i | sort | uniq -c > $i.count; done 
 
 ```
-where i.count will be the files with the nifH phylotypes abundances per sample. You can find an example of this files in the folder IMG_analysis_output
+Where i.count will be the files with the nifH phylotypes abundances per sample. You can find an example of this files in the folder IMG_analysis_output
+
+**Step 6**: Printing a matrix suitable for data visualization (e.g., R). Notice here you need to create first a file listing all the nifH phylotype identified (example of file: list_all_phyla_found_uniq)
+
+```shell
+for i in *.count ; do echo $i; perl create_OTU_file_per_sample.pl list_all_phyla_found_uniq $i ; done >> phyla_count
+
+```
+oprtional sort sample per sample date:
+```shell
+perl 
+
+**Data visualization**
+
+Some example of R code can be found in the file Chapter4.Rhistory (example: barplot, NMDS plot)
 
 
