@@ -9,6 +9,7 @@ To measure nifH abundances we used merged (but unassembled reads from JGI/IMG) a
 - Perl, R and very basic knowledge of shell scripting.
 - [Blast](https://blast.ncbi.nlm.nih.gov/Blast.cgi)
 - [Prinseq](https://sourceforge.net/projects/prinseq/files/)
+- [Megan] 
 
 ## 1) Enumeration of nifH genes using genomes in IMG:
 
@@ -71,5 +72,12 @@ perl prinseq-lite-0.20.4/prinseq-lite.pl -fastq <input_file> -out_format 1 -out_
 
 ```
 
-**Step 2**:  BLASTNn (e-value <= 10-20) and performed searches using a nifH sequence database available at the [Buckley Lab website](https://blogs.cornell.edu/buckley/nifh-sequence-database/)
+**Step 2**:  BLASTN (e-value <= 10-20) and performed searches using a nifH sequence database available at the [Buckley Lab website](https://blogs.cornell.edu/buckley/nifh-sequence-database/)
+
+```shell
+blastn -query <.fasta_file> -db nifH_database_2012.fasta -outfmt 6 -evalue <1x10-20> -out <blast.output_file> 
+
+```
+**Step 3**:  Obtain the fasta file only with nifH gene sequences 
+
 
