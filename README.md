@@ -35,7 +35,7 @@ missingGenes* are the downloaded blast output files from IMG with information ab
 ```shell
 for i in IMG_analysis/*/*potential_NIFH; do perl perl_script_to_get_taxonomy_abundances.pl info_and_taxo.csv $i $i.output; done 
 ```
-Where (*)potential_NIFH are the output of the step 4, info_and_taxo.csv is the taxonomical mapping file and i.output are the output of the script ./perl_script_to_get_taxonomy_abundances.pl
+Where (*)potential_NIFH are the output of the step 4, info_and_taxo.csv is the taxonomical mapping file and i.output are the output of the script (./perl_script_to_get_taxonomy_abundances.pl)
 
 ```shell
 for i in IMG_analysis/*/*potential_NIFH.output ; do awk -F ";" '{print $2}' $i | sort | uniq -c > $i.count; done 
