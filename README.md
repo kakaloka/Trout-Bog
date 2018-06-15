@@ -51,7 +51,7 @@ for i in *.count ; do echo $i; perl create_OTU_file_per_sample.pl list_all_phyla
 ```
 oprtional sort sample per sample date:
 ```shell
-perl [sort_samples_per_date.pl](./sort_samples_per_date.pl) <file_with_the_sorted_list> <phyla_count>
+perl ./sort_samples_per_date.pl <file_with_the_sorted_list> <phyla_count>
 
 ```
 
