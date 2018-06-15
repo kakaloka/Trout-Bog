@@ -18,7 +18,7 @@ To measure nifH abundances we used merged (but unassembled reads from JGI/IMG) a
 
 **Step 3**: Blast again "no hit" annotated nitrogenase (after step 2) against the entire JGI/IMG collection of SAGs and MAGs 
 
-Download the files with blast information from JGI/IMG. You can find all the files downloaded from JGI in the folder [IMG_analysis](./IMG_analysis) included in this repository (the files are named missingGenes* and are organized into folders (per sample) and the folder name represent the sample code., e.g, IHUZ, IHXY .....).
+Download the files with blast information from JGI/IMG. You can find all the files downloaded from JGI in the folder [IMG_analysis](./IMG_analysis.tar.gz) included in this repository (the files are named missingGenes* and are organized into folders (per sample) and the folder name represent the sample code., e.g, IHUZ, IHXY .....).
 
 **Step 4**: Filter out: chlorophyllide reductase gene contamination and select only nitrogenase gene taxonomic annotation following this criteria: e-value < 10-20 and a percentage of identity > 95%
 
@@ -30,7 +30,7 @@ for i in */missingGenes*; do sed -n 2p $i | grep -v chlorophyll | awk  -F "\t" '
 
 missingGenes* are the downloaded blast output files from IMG with information about Pfam, KO, COG and taxonomical annotation.
 
-**Step 5**: nifH gene phylotypes enrichment calculation. Before this step is important to make a file with potential nifH per sample (concatenate all files with the extension .potential_nifH, see examples in the sample folders included in [IMG_analysis](./IMG_analysis)) 
+**Step 5**: nifH gene phylotypes enrichment calculation. Before this step is important to make a file with potential nifH per sample (concatenate all files with the extension .potential_nifH, see examples in the sample folders included in [IMG_analysis](./IMG_analysis.tar.gz)) 
 
 ```shell
 for i in IMG_analysis/*/*potential_NIFH; do perl perl_script_to_get_taxonomy_abundances.pl info_and_taxo.csv $i $i.output; done 
@@ -41,7 +41,7 @@ Where (*)potential_NIFH are the output of the step 4, [info_and_taxo.csv](./info
 for i in IMG_analysis/*/*potential_NIFH.output ; do awk -F ";" '{print $2}' $i | sort | uniq -c > $i.count; done 
 
 ```
-Where i.count will be the files with the nifH phylotypes abundances per sample. You can find an example of this files in the folder [IMG_analysis_output](./IMG_analysis_output)
+Where i.count will be the files with the nifH phylotypes abundances per sample. You can find an example of this files in the folder [IMG_analysis_output](./IMG_analysis_output.tar.gz)
 
 **Step 6**: Printing a matrix suitable for data visualization (e.g., R). Notice here you need to create first a file listing all the nifH phylotype identified (example of file: [list_all_phyla_found_uniq](./list_all_phyla_found_uniq)
 
@@ -51,7 +51,7 @@ for i in *.count ; do echo $i; perl create_OTU_file_per_sample.pl list_all_phyla
 ```
 oprtional sort sample per sample date:
 ```shell
-perl sort_samples_per_date.pl <file_with_the_sorted_list> <phyla_count>
+perl [sort_samples_per_date.pl](./sort_samples_per_date.pl) <file_with_the_sorted_list> <phyla_count>
 
 ```
 
