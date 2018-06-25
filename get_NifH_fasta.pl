@@ -15,7 +15,7 @@ my $ID;
 my $sequence;
 my $pattern;
 
-my @caca;
+my @inter_var;
 
 while (my $line=<FILE>){
 
@@ -50,7 +50,7 @@ $c= 0;
 
 if ($c==1){
 
-push (@caca, $newline);
+push (@inter_var, $newline);
 #print $newline;
 
 }
@@ -65,7 +65,7 @@ close FILETWO;
 close FILE;
 open(FILESALIDA, '>', $filesalida) or die;
 
-print FILESALIDA @caca;
+print FILESALIDA @inter_var;
 
 close FILESALIDA;
 
