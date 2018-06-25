@@ -81,12 +81,15 @@ blastn -query <.fasta_file> -db nifH_database_2012.fasta -outfmt 6 -evalue <1x10
 **Step 3** Creating the file containing the id of the reads identified as nifH. Example : [trout_bog_blasted_file_example](./nifH_blasted_files.tar.gz)
 
 ```shell
-for i in <dir_with_the_blastout_files> ; do awk  -F "\t" '$3 >= 95 {print $1}' | sort | uniq > $i.bin_253_taxonifhcount ; done
+for i in <dir_with_the_blastout_files> ; do awk  -F "\t" '$3 >= 95 {print $1}' | sort | uniq > $i.95cutoff.name ; done
 ```
 
 
-**Step 4**:  Obtain the fasta file only with nifH gene sequences using the script get_NifH_fasta.pl
+**Step 4**:  Obtain the fasta file only with nifH gene sequences using the script [get_NifH_fasta.pl](./get_NifH_fasta.pl)
 
 
+```shell
+perl get_NifH_fasta.pl <genes_ID> <fasta_file> <output> 
+```
 
 
