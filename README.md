@@ -31,7 +31,7 @@ for i in */missingGenes*; do sed -n 2p $i | grep -v chlorophyll | awk  -F "\t" '
 
 missingGenes* are the downloaded blast output files from IMG with information about Pfam, KO, COG and taxonomical annotation.
 
-**Step 5**: nifH gene phylotypes enrichment calculation. Before this step is important to make a file with potential nifH per sample (concatenate all files with the extension .potential_nifH, see examples in the sample folders included in [IMG_analysis](./IMG_analysis.tar.gz)) 
+**Step 5**: nifH gene phylotypes enrichment calculation. Before this step is important to make a file with potential nifH per sample (concatenate all files with the extension .potential_nifH, see examples in the sample folders included in  [IMG_analysis](./IMG_analysis.tar.gz))
 
 ```shell
 for i in IMG_analysis/*/*potential_NIFH; do perl perl_script_to_get_taxonomy_abundances.pl info_and_taxo.csv $i $i.output; done 
@@ -78,7 +78,12 @@ perl prinseq-lite-0.20.4/prinseq-lite.pl -fastq <input_file> -out_format 1 -out_
 blastn -query <.fasta_file> -db nifH_database_2012.fasta -outfmt 6 -evalue <1x10-20> -out <blast.output_file> 
 
 ```
-**Step 3** 
+**Step 3** Creating the file containing the id of the reads identified as nifH. Example : [trout_bog_blasted_file_example](./nifH_blasted_files.tar.gz)
+
+```shell
+for i in <dir_with_the_blastout_files> ; do awk  -F "\t" '$3 >= 95 {print $1}' | sort | uniq > $i.bin_253_taxonifhcount ; done
+```
+
 
 **Step 4**:  Obtain the fasta file only with nifH gene sequences using the script get_NifH_fasta.pl
 
