@@ -9,7 +9,7 @@ To measure nifH abundances we used merged (but unassembled reads from JGI/IMG) a
 - Perl, R and very basic knowledge of shell scripting.
 - [Blast](https://blast.ncbi.nlm.nih.gov/Blast.cgi)
 - [Prinseq](https://sourceforge.net/projects/prinseq/files/)
-- [Megan] 
+- [Megan](http://ab.inf.uni-tuebingen.de/software/megan/)
 
 ## 1) Enumeration of nifH genes using genomes in IMG:
 
@@ -75,7 +75,7 @@ perl prinseq-lite-0.20.4/prinseq-lite.pl -fastq <input_file> -out_format 1 -out_
 **Step 2**:  BLASTN (e-value <= 10-20) and performed searches using a nifH sequence database available at the [Buckley Lab website](https://blogs.cornell.edu/buckley/nifh-sequence-database/)
 
 ```shell
-blastn -query <.fasta_file> -db nifH_database_2012.fasta -outfmt 6 -evalue <1x10-20> -out <blast.output_file> 
+blastn -query <.fasta_file> -db nifH_database_2012.fasta -outfmt 6 -evalue 1x10-20 -out <blast.output_file> 
 
 ```
 **Step 3** Creating the file containing the id of the reads identified as nifH. Example : [trout_bog_blasted_file_example](./nifH_blasted_files.tar.gz)
@@ -91,5 +91,17 @@ for i in <dir_with_the_blastout_files> ; do awk  -F "\t" '$3 >= 95 {print $1}' |
 ```shell
 perl get_NifH_fasta.pl <genes_ID> <fasta_file> <output> 
 ```
+**Step 5**:  Fasta files with nifH sequences can be analised using Megan. For instance, taxonomic assignment, check of contaminants etc. 
 
 
+## 3) 16S rRNA gene analysis using metagenomic data ("in house pipeline")
+
+**Step 1**:  Format the RDP database (in our case we used realease11_2_Bacteria_unaligned.fa). Then, delete first column of the database prior to format. After we obtained a file column_RDP.fasta, we formatted column_RDP.fasta using makedb.
+
+**Step 2**:  Blast the fasta files agains the formatted database
+Blast command example:
+
+```shell
+blastn -query <fasta_files> -db  column_RDP.fasta -outfmt 6 -evalue 1x10-20 -out <blastout_file>
+```
+ **Step 4**: Next steps are implemented in the script get_OTU.sh. The script get_OTU.sh requiere APIPE
