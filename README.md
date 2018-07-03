@@ -96,12 +96,12 @@ perl get_NifH_fasta.pl <genes_ID> <fasta_file> <output>
 
 ## 3) 16S rRNA gene analysis using metagenomic data ("in house pipeline")
 
-**Step 1**:  Format the RDP database (in our case we used realease11_2_Bacteria_unaligned.fa). Then, delete first column of the database prior to format. After we obtained a file column_RDP.fasta, we formatted column_RDP.fasta using makedb.
+**Step 1**:  Format the RDP database (in our case we used realease11_2_Bacteria_unaligned.fa). Then, delete first column of the database prior to format. After we have obtained the file column_RDP.fasta, then we formatted column_RDP.fasta using makedb.
 
-**Step 2**:  Blast the fasta files agains the formatted database
+**Step 2**:  Blast the fasta files against the formatted database
 Blast command example:
 
 ```shell
 blastn -query <fasta_files> -db  column_RDP.fasta -outfmt 6 -evalue 1x10-20 -out <blastout_file>
 ```
- **Step 4**: Next steps are implemented in the script get_OTU.sh. The script get_OTU.sh requiere APIPE
+ **Step 4**: Next steps are implemented in the script [get_OTU.sh](./get_OTU.sh). The script get_OTU.sh requiere [APIPE] (./Source Code V1.zip) (RDP Classifier 2.4 (Wanget al.,January 2012)). An example of output files can be found in the directory OTU_RDP_files.tar.gz
