@@ -104,4 +104,4 @@ Blast command example:
 ```shell
 blastn -query <fasta_files> -db  column_RDP.fasta -outfmt 6 -evalue 1x10-20 -out <blastout_file>
 ```
- **Step 4**: Next steps are implemented in the script [get_OTU.sh](./get_OTU.sh). The script get_OTU.sh requiere [APIPE] (./SourceCodeV1.zip) (RDP Classifier 2.4 (Wanget al.,January 2012)). An example of output files can be found in the directory [OTU_RDP_files.tar.gz](./OTU_RDP_files.tar.gz)
+ **Step 4**: Next steps are implemented in the script [get_OTU.sh](./get_OTU.sh). The script get_OTU.sh requiere [APIPE] (Trout-Bog/Source Code V1.zip) (RDP Classifier 2.4 (Wanget al.,January 2012)). An example of output files can be found in the directory [OTU_RDP_files.tar.gz](./OTU_RDP_files.tar.gz)
