@@ -63,7 +63,7 @@ Some example of R code can be found in the file [Chapter4.Rhistory](./Chapter4.R
 
 ## 2) Enumeration of nifH using a nitrogenase gene database ("in house pipeline")
 
-see (./Fig1_pipeline_troutbog_nifh.eps)
+see [Figure1:Pipeline](./Fig1_pipeline_troutbog_nifh.eps)
 
 **Step 1**: Convert the sequences downloaded from JGI site from fastq to fasta (corresponding to the metagenomic samples from hypolimnion and epilimnion in Trout Bog)
 
