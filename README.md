@@ -58,7 +58,7 @@ perl sort_samples_per_date.pl <file_with_the_sorted_list> <phyla_count>
 
 **Data visualization**
 
-Some example of R code can be found in the file [Chapter4.Rhistory](./Chapter4.Rhistory) (example: barplot, NMDS plot)
+Some example of R code can be found in the file [Barplot_and_NMDSplot.Rhistory](./Barplot_and_NMDSplot.Rhistory) (example: barplot, NMDS plot) and the Figure 3 scripts are in the file [Figure3_ABCD_troutbog2.Rhistory](./Figure3_ABCD_troutbog2.Rhistory)
 
 
 ## 2) Enumeration of nifH using a nitrogenase gene database ("in house pipeline")
