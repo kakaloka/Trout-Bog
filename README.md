@@ -13,7 +13,7 @@ To measure nifH abundances we used merged (but unassembled reads from JGI/IMG) a
 
 ## 1) Enumeration of nifH genes using genomes in IMG:
 
-**Step 1**:  Download a set of nitrogenase gene from IMG (reads classified as nitrogenase genes by comparison to Pfam, KO and COG databases (all these annotations were included in JGI/IMG))
+**Step 1**:  Download a set of nitrogenase gene from IMG (reads classified as nitrogenase genes by comparison to Pfam, KO and COG databases (all these annotations were included in JGI/IMG)) See the file: IMG_downloads_and analysis.pdf
 
 **Step 2**: Blast the annotated nifH genes against MAGs and SAGs from Trout Bog to retrieve taxonomic information
 
